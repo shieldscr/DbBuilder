@@ -20,4 +20,18 @@ public class InsertSqlBuilderTest {
         assertEquals(expectedSql, builder.toString());
     }
 
+    @Test
+    public void autoIncrementedIDColumnReturnsTwoWhenCalledTwice() {
+        String expectedSql = "INSERT INTO TEST_TABLE (" + TEST_PRIMARY_KEY_ID + ") VALUES ('2')";
+        builder.toString();
+        assertEquals(expectedSql, builder.toString());
+    }
+
+    @Test
+    public void tableNameIsSetByBuilder() {
+        String tableName = "MY_TEST_TABLE";
+        String expectedSql = "INSERT INTO " + tableName + " (" + TEST_PRIMARY_KEY_ID + ") VALUES ('1')";
+        assertEquals(expectedSql, new InsertSqlBuilder(tableName).toString());
+    }
+
 }

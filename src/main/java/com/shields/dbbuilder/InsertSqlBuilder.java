@@ -3,16 +3,17 @@ package com.shields.dbbuilder;
 
 public class InsertSqlBuilder {
 
-    private int ID;
-    private String TABLE_NAME;
+    private int Id;
+    private String tableName;
 
     public InsertSqlBuilder(String tableName) {
-        TABLE_NAME = tableName;
-        ID = 0;
+        this.tableName = tableName;
+        Id = 0;
     }
 
     @Override
     public String toString() {
-        return "INSERT INTO TEST_TABLE (TEST_ID) VALUES ('1')";
+        Id++;
+        return String.format("INSERT INTO %s (TEST_ID) VALUES ('%s')",tableName , Id);
     }
 }
